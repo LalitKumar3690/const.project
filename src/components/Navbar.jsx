@@ -54,6 +54,11 @@ function Navbar() {
             ]
         }
     ]
+   
+
+
+
+
   return (
     <nav>
         <div className='w-screen h-20 bg-white flex px-6 justify-between items-center'>
@@ -61,12 +66,12 @@ function Navbar() {
                 <img src={Logo}></img>
             </div>
             <div className='flex gap-10 items-center'>
-                <div className='flex gap-10'>
-                    <button className='text-sm'>Catalog</button>
+                <div className='flex gap-10 items-center'>
+                    <button className=' font-NavMenuFont '>Catalog</button>
                     {
                         Navdata.map((value, index)=>(
-                            <div>
-                                <button key={value.id} className='text-sm flex gap-1'
+                            <div key={value.id}>
+                                <div  className=' flex gap-1 group font-NavMenuFont'
                                 onMouseEnter={()=>setIsHovered(index)}
                                 onMouseLeave={()=>setIsHovered(null)}
                                 >
@@ -76,9 +81,14 @@ function Navbar() {
                                             isHovered === index ? <GoChevronUp /> : <GoChevronDown />
                                         }
                                     </span>
-                                </button>
-                                <div className='absolute'>
-                                    <ul>
+                                </div>
+                                <div className='relative'>
+                                <ul
+                                    className={`bg-blue-300 w-28 absolute transition-translate duration-500 ease-in-out transform overflow-y-hidden ${
+                                        isHovered === index ? 'h-36 translate-y-0 opacity-100' : 'h-0  opacity-0'
+                                    }`}
+                                    // Ensures content is clipped when height is 0
+                                >
                                         {
                                             value.submenu.map(sub=>(
                                                 <li>{sub.subname}</li>                                                
@@ -89,14 +99,15 @@ function Navbar() {
                             </div>
                         ))
                     }
-                    <button className='text-sm'>About us</button>
-                    <button className='text-sm'>Achievements</button>
+                    <button className='font-NavMenuFont'>About us</button>
+                    <button className='font-NavMenuFont '>Achievements</button>
                 </div>
-                <div className='flex py-5 gap-4 '>
+                <div className='flex py-1 gap-4 '>
                     <button className='text-xl text-gray-600'><LuPhoneCall/></button>
                     <button className='text-2xl text-gray-500'><MdOutlineEmail/></button>
-                    <button className='bg-red-400  px-4 rounded-md text-sm text-white '>Schedule Consulting</button>
+                    <button className='bg-red-400 py-3 px-4 rounded-md text-sm text-white font-semibold hover:bg-red-500'>Schedule Consulting</button>
                 </div>
+                
             </div>
         </div>
     </nav>

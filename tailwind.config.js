@@ -8,7 +8,11 @@ export default {
     extend: {
       colors:{
         Navtextcolor:"text-gray-600"
-      }
+      },
+    fontFamily: {
+        NavMenuFont: ['Montserrat', 'sans-serif'],
+        subMenuFont:['Karla', 'sans-serif']
+    },
     },
   },
   plugins: [],
