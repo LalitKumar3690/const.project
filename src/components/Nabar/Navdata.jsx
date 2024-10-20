@@ -24,7 +24,7 @@ const Navdata = [
             {
                 id:4,
                 subbutname:"Texthere"
-            },
+            }
         ]
     },
     {
