@@ -281,6 +281,18 @@ const App = () => {
         </div>
         <Footer />
       </div>
+      <nav class="bg-blue-500 text-white rounded-lg">
+  <ul class="flex justify-center py-4 gap-4">
+    <li><a href="#" class="hover:underline">Home</a></li>
+    <li><a href="#" class="hover:underline">About</a></li>
+    <li><a href="#" class="hover:underline">Services</a></li>
+    <li><a href="#" class="hover:underline">Projects</a></li>
+    <li><a href="#" class="hover:underline">Clients</a></li>
+    <li><a href="#" class="hover:underline">News</a></li>
+    <li><a href="#" class="hover:underline">Careers</a></li>
+    <li><a href="#" class="hover:underline">Contact</a></li>
+  </ul>
+</nav>
     </>
   );
 };
