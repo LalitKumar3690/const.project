@@ -15,6 +15,10 @@ import { FiMenu } from "react-icons/fi";
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [activeButton, setActiveButton] = useState(null);
+  const toggleSubButtons = (id) => {
+    setActiveButton(activeButton === id ? null : id); // Toggle the active button
+  };
 
     const handleScroll = () => {
         if (window.scrollY > 30) {
@@ -23,6 +27,19 @@ const Header = () => {
             setScrolling(false);
         }
     };
+
+    useEffect(() => {
+      if (menu) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+  
+      // Clean up on component unmount or when the menu closes
+      return () => {
+        document.body.style.overflow = "auto";
+      };
+    }, [menu]);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -34,10 +51,14 @@ const Header = () => {
   const [isHovered, setIsHovered] = useState(null)
   const [optionsVisible, setoptionVisible] = useState(false)
   return (
-    <header
-    >
-      <nav className={`w-full top-0 left-0 z-50 fixed  flex items-center justify-center ${scrolling? 'bg-gradient-to-l to-white via-white from-sky-900 2xl:h-[6rem] xl:h-[5rem] lg:h-[4rem] transition-colors duration-300 ease-in-out' : 'bg-gradient-to-l to-white via-white/ from-[#3472b03b] 2xl:h-[8rem] xl:h-[7rem] lg:h-[5.5rem]'}`}>
-          <div className={`w-[95%] flex justify-between rounded-md ${scrolling ? '2xl:h-[4em] xl:h-[3.5em] lg:h-[3em]' : '2xl:h-[4.8em] xl:h-[4.3em] lg:h-[3.3em]'}`}>
+    <header className='z-10 relative'>
+      <div className={`fixed z-50 top-0 bottom-0 left-0 h-full w-full duration-300 ${menu?'backdrop-blur-sm':'backdrop-blur-0'}`} 
+      onClick={()=>{
+        menu?setMenu(false):setMenu(false)
+      }}
+      />
+      <nav className={`  w-full top-0 left-0 z-50 fixed flex items-center justify-center ${scrolling? 'bg-gradient-to-l to-white via-white from-sky-900 2xl:h-[6rem] xl:h-[5rem] lg:h-[4rem] transition-colors duration-300 ease-in-out' : 'bg-gradient-to-l to-white via-white/ from-[#3472b03b] 2xl:h-[8rem] xl:h-[7rem] lg:h-[5.5rem]'}`}>
+          <div className={`w-[95%] hidden sm:flex md:flex justify-between rounded-md ${scrolling ? '2xl:h-[4em] xl:h-[3.5em] lg:h-[3em]' : '2xl:h-[4.8em] xl:h-[4.3em] lg:h-[3.3em]'}`}>
               <div className={`h-full  w-[75%] lg:w-[72%] flex justify-center rounded-md items-center`}>
                 <div className={`flex items-center justify-between bg-white w-[95%] shadow-xl rounded-l-md `}>
                   <div className={`flex 2xl:w-60 xl:w-60 lg:w-48 h-full items-center  pt-1`}>
@@ -93,8 +114,62 @@ const Header = () => {
               </div>
           </div>
           {/* mobile menu */}
-          
-      </nav>
+          <div className='h-16 w-full flex sm:hidden md:hidde items-center justify-between px-2'>
+            <div className='h-14 '>
+              <img src={Logo} className='h-full pt-1'></img>
+            </div>
+            <div className='h-full flex gap-4 items-center relative'>
+              <button className='text-xl text-gray-800'><LuPhoneCall/></button>
+              <button className='text-2xl text-gray-800'><IoMailOutline/></button>
+              <button className='h-8 w-24 bg-[#3372b1] border-[2px] rounded-md text-white'>Contact us</button>
+              <button className='text-gray-200 text-3xl z-50' onClick={()=>setMenu(!menu)}>
+                {
+                  menu ? <RiCloseLargeLine className='text-gray-700'/> : <FiMenu  className='text-gray-200'/>
+                }
+              </button>
+              <div className={`bg-gray-400 z-10 fixed w-[75%] top-0 bottom-0 h-full duration-300 ${menu ? 'right-0':'right-[-100%]'} overflow-y-auto`}>
+              <div className=''>
+              <div className='pt-20 pl-14 flex flex-col gap-4 '>
+              {
+                Navdata.map((value)=>(
+                  <div>
+                    <div className=''>
+                      <button className='flex items-center gap-1' key={value.id}  onClick={() => toggleSubButtons(value.id)}>{value.buttoname}
+                        {
+                          value.subbuthai && <span>
+                            {
+                            activeButton === value.id ? <MdArrowDropUp/> : <MdArrowDropDown/>
+                            }
+                          </span>
+                        }
+                      </button>
+                      {
+                        value.subbuthai && <div className={ ` ${activeButton === value.id  ? 'flex flex-col items-start pl-8 pt-3 gap-2' : 'hidden'} `}>
+                          {
+                            value.subbut.map((sub)=>(
+                              <button  key={sub.id}>{sub.subbutname}</button>
+                            ))
+                          }
+                        </div>
+                      }
+                    </div>
+                  </div>
+                ))
+              }
+              </div>
+              <button className='h-8 w-24 bg-[#3372b1] border-[2px] rounded-md text-white mt-4 ml-14'>Contact us</button>
+            
+              </div>
+              <div className='flex gap-12 items-center justify-center'>
+              <button className='text-xl text-gray-800'><LuPhoneCall/></button>
+              <button className='text-2xl text-gray-800'><IoMailOutline/></button>
+              </div>
+            </div>
+              
+            </div>
+            
+          </div>
+      </nav>     
       <Hero/>
     </header>
   )
