@@ -84,11 +84,11 @@ const Header = () => {
                                 }
                                 </button>   
                               <div className='w-0 h-[2px] bg-black/70 rounded-xl group-hover:w-full duration-700'></div>
-                              <div className='absolute 2xl:top-16 group-hover:block hidden z-50'
+                              <div className={`absolute  group-hover:block hidden w-auto z-50 ${scrolling ? '' : 'top-[60px] pt-4'}`}
                               onMouseEnter={()=>setoptionVisible(true)}
                               onMouseLeave={()=>setoptionVisible(false)}>
-                                {value.subbuthai && <div className={`w-48 absolute transition-translate duration-500 ease-in-out transform overflow-y-hidden border-2 border-white rounded-lg backdrop-blur-lg ${
-                                          isHovered === index || optionsVisible ? 'h-max translate-y-0 opacity-100' : ' h-0 opacity-0'
+                                {value.subbuthai && <div className={`w-48 absolute transition-translate duration-500 ease-in-out transform overflow-y-hidden border-2 border-white rounded-lg backdrop-blur-xl ${scrolling ? '' : ''} ${
+                                          isHovered === index || optionsVisible ? 'h-min translate-y-0 opacity-100' : ' h-0 opacity-0'
                                       } `}>
                                   {value.subbut.map(sub=>(
                                     <h2 key={sub.id} className='my-3 mx-3 border-b-[0.5px] pb-1 duration-100 ease-in-out border-white/50 text-white cursor-pointer hover:scale-105'>{sub.subbutname}</h2>

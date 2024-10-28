@@ -3,18 +3,17 @@ import Footer from "./components/footer/Footer";
 import Mainsection from './components/main/Mainsection';
 // import Navbartemplate from './components/Nabar/Navbartemplate'
 import Aboutus from "./components/aboutus/Aboutus";
+// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
 
 const App = () => {
   return (
-    <>
-      <div>
-        {/* <Header />
+      <>
+        <Header/>
         <Mainsection/>
-        <Footer /> */}
+        <Footer/>
         <Aboutus/>
-      </div>
-      
-    </>
+      </>
   );
 };
 

@@ -51,6 +51,7 @@ const Navdata = [
         id:5,
         buttoname:"About us",
         subbuthai:true,
+        add:"/about",
         subbut:[
             {
                 id:1,
