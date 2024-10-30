@@ -3,3 +3,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@keyframes motions {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+    
+}
+
+.boxanimation{
+    animation: motions linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes motion {
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+        opacity: 1;
+        scale:1;
+    }
+    
+}
+
+@keyframes motion2 {
+    from{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes motion3 {
+    from{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.content1{
+    animation: motion2 linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+.content2{
+    animation: motion3 linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+.new{
+    animation: motion linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}

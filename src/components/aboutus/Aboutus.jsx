@@ -41,15 +41,15 @@ const Aboutus = () => {
   }, []);
 
   return (
-    <div>
-      <div className='w-full h-96 relative mt-4'>
+    <div className='relative z-30 md:mt-36 '>
+      <div className='w-full md:h-96 h-48 relative mt-4'>
         <div className='w-[80%] mx-auto border-2 border-gray-800 rounded-xl p-8 h-full '>
-          <img src={Bg1} className='w-full h-full '></img>
+          <img src={Bg1} className='w-full h-full object-cover'></img>
         </div>
-        <div className='absolute bottom-10 w-full flex justify-center items-center gap-12 flex-wrap'>
+        <div className='absolute  bottom-10 w-full flex justify-center items-center gap-12 flex-wrap'>
           {
             buttons.map(v=>(
-              <buttons key={v.id} className='bg-sky-700 px-6 py-2 rounded-md text-gray-100 cursor-pointer' 
+              <buttons key={v.id} className='md:bg-sky-700 md:px-6 md:py-2 md:rounded-md text-gray-100 cursor-pointer' 
               onClick ={()=>{scrollHandler(v.link)}}
               >{v.name}</buttons>
             ))
@@ -57,7 +57,7 @@ const Aboutus = () => {
         </div>
         
       </div> 
-      <div className='bg-slate-50 flex flex-col gap-12 my-4'>
+      <div className=' bg-slate-50 flex flex-col gap-12 my-4'>
       {/* <div className=' z-10 h-full w-full top-0 left-0 bottom-0 fixed'>
         <img src={Bg1} alt="bg1" />
         <img  src={Bg2} alt="bg2" />
@@ -65,24 +65,24 @@ const Aboutus = () => {
         {
           Aboutdata.map((value)=>(
             value.position ? 
-            <div key={value.id} id={value.link} className={`bg-slate-200 py-12 z-50 relative duration-500 `}>
-              <div className='flex gap-8 justify-center px-8 '>
-                <div className={`w-[40%] h-full rounded-md transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0': 'opacity-0 -translate-x-[100%]'}`}>
+            <div key={value.id} id={value.link} className={`md:boxanimation bg-slate-200 py-12 z-50 relative duration-500 `}>
+              <div className='md:content1 flex gap-8 justify-center px-8 md:flex-row flex-col'>
+                <div className={` md:w-[40%] w-[95%] h-full rounded-md transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0': 'opacity-0 -translate-x-[100%]'}`}>
                   <img src={value.src} className='rounded-md'></img>
                 </div>
-                <div className='w-[40%] flex flex-col justify-center gap-8 '>
+                <div className=' md:w-[40%] w-[95%] flex flex-col justify-center gap-8 '>
                   <h1 className='text-3xl font-sans font-semibold text-gray-800'>{value.title}</h1>
                   <p  className='text-lg font-sans text-gray-600'>{value.description}</p>
                 </div>
               </div>
             </div> : 
-            <div key={value.id} id={value.link} className=' bg-slate-200 py-12 z-50 relative'>
-            <div className='flex gap-8 justify-center px-8'>
-              <div className='w-[40%] flex flex-col justify-center gap-8 '>
+            <div key={value.id} id={value.link} className='boxanimation bg-slate-200 py-12 z-50 relative'>
+            <div className='md:content2 flex gap-8 justify-center px-8 md:flex-row flex-col'>
+              <div className='md:w-[40%] w-[95%]  flex flex-col justify-center gap-8 items-center'>
                 <h1 className='text-3xl font-sans font-semibold text-gray-800'>{value.title}</h1>
                 <p  className='text-lg font-sans text-gray-600'>{value.description}</p>
               </div>
-              <div className='w-[40%] h-full rounded-md'>
+              <div className='md:w-[40%] w-[95%] h-full rounded-md'>
                 <img src={value.src} className='rounded-md'></img>
               </div>
             </div>
