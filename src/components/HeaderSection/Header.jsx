@@ -11,9 +11,11 @@ import { MdArrowDropUp } from "react-icons/md";
 import { RiCloseLargeLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import { Link } from 'react-router-dom'
+// import { useScroll } from '../context/ScrollContext';
 
 
 const Header = () => {
+  
   const [scrolling, setScrolling] = useState(false);
   const [menu, setMenu] = useState(false);
   const [activeButton, setActiveButton] = useState(null);
@@ -52,14 +54,14 @@ const Header = () => {
   const [isHovered, setIsHovered] = useState(null)
   const [optionsVisible, setoptionVisible] = useState(false)
   return (
-    <header className='fixed z-50'>
+    <header className='fixed z-50 top-0'>
       <div className={` md:fixed sm:fixed hidden z-20 top-0 bottom-0 left-0 h-full w-full duration-300 ${menu?'backdrop-blur-sm':'backdrop-blur-0'}`} 
       onClick={()=>{
         menu?setMenu(false):setMenu(false)
       }}
       />
       <nav>
-      <div className={`hidden w-full top-0 left-0  z-50 fixed md:flex sm:flex items-center justify-center ${scrolling? 'bg-gradient-to-l to-white via-white from-sky-900 2xl:h-[6rem] xl:h-[5rem] lg:h-[4rem] h-[2.5rem] transition-colors duration-300 ease-in-out' : 'bg-gradient-to-l to-white via-white/ from-[#3472b03b] 2xl:h-[8rem] xl:h-[7rem] lg:h-[5.5rem] h-[3.5rem]'}`}>
+      <div className={`hidden w-full top-0 left-0  z-50 fixed md:flex sm:flex items-center justify-center ${scrolling? 'bg-gradient-to-l to-white via-white from-sky-900 2xl:h-[6rem] xl:h-[5rem] lg:h-[4rem] h-[2.5rem] transition-colors duration-300 ease-in-out' : 'bg-gradient-to-l to-white via-white/ from-[#3472b03b] bottomborder 2xl:h-[8rem] xl:h-[7rem] lg:h-[5.5rem] h-[3.5rem]'}`}>
           <div className={`w-[95%] hidden sm:flex md:flex justify-between rounded-md ${scrolling ? '2xl:h-[4em] xl:h-[3.5em] lg:h-[3em] h-[1.5em]' : '2xl:h-[4.8em] xl:h-[4.3em] lg:h-[3.3em] h-[2em]'}`}>
               <div className={`h-full  w-[75%] lg:w-[72%] flex justify-center rounded-md items-center`}>
                 <div className={`flex items-center justify-between bg-white w-[95%] shadow-xl rounded-l-md `}>
@@ -78,6 +80,7 @@ const Header = () => {
                               <div className='' key={value.id}>
                               <button className={`2xl:text-lg lg:text-xs xl:text-base text-[0.5rem] flex items-center font-serif 2xl:font-bold  ${value.subbuthai ? "2xl:pt-0" : "2xl:pt-0"}`} 
                               onMouseEnter={()=>setIsHovered(index)}
+                              onClick={()=>setIsHovered(null)}
                               // onMouseLeave={()=>setIsHovered(null)}
                               >{value.buttoname}
                                 {
@@ -101,7 +104,9 @@ const Header = () => {
                                           (isHovered === index || optionsVisible) ? 'h-max translate-y-4 opacity-100  ' : ' h-0 opacity-0 translate-y-0'
                                       } `}>
                                   {value.subbut.map(sub=>(
-                                    <h2 key={sub.id} className='2xl:my-5 xl:my-4 lg:my-3 2xl:mx-5 xl:mx-4 lg:mx-3 my-2 mx-2 border-b-[0.5px] pb-1 duration-100 ease-in-out border-white/50 text-white cursor-pointer hover:scale-105 2xl:text-base xl:text-sm lg:text-xs text-[0.35rem]'>{sub.subbutname}</h2>
+                                    
+                                    <Link to='/about'>
+                                    <h2 key={sub.id} className='2xl:my-5 xl:my-4 lg:my-3 2xl:mx-5 xl:mx-4 lg:mx-3 my-2 mx-2 border-b-[0.5px] pb-1 duration-100 ease-in-out border-white/50 text-white cursor-pointer hover:scale-105 2xl:text-base xl:text-sm lg:text-xs text-[0.35rem]'>{sub.subbutname}</h2></Link>
                                   ))}
                                   </div>}
                               </div>
@@ -125,7 +130,7 @@ const Header = () => {
           </div>
           </div>
           {/* mobile menu */}
-          <div className={`fixed z-50 h-14 ${scrolling ? 'bg-gradient-to-l to-white via-white from-sky-900' : 'bg-gradient-to-l to-white via-white/ from-[#3472b03b]'} w-full flex sm:hidden md:hidden items-center justify-between px-2`}>
+          <div className={`fixed z-50 h-14 ${scrolling ? 'bg-gradient-to-l to-white via-white from-sky-900' : 'bg-gradient-to-l to-white via-white/ from-[#336699a1]'} w-full flex sm:hidden md:hidden items-center justify-between px-2`}>
             <div className='h-14 '>
               <img src={Logo} className='h-full pt-1'></img>
             </div>
@@ -138,13 +143,14 @@ const Header = () => {
                   menu ? <RiCloseLargeLine className='text-gray-700'/> : <FiMenu  className='text-gray-200'/>
                 }
               </button>
-              <div className={`bg-gray-400 z-10 fixed w-[75%] top-0 bottom-0 h-full duration-300 ${menu ? 'right-0':'right-[-100%]'} overflow-y-auto`}>
-              <div className=''>
-              <div className='pt-20 pl-14 flex flex-col gap-4 '>
+              <div className={`bg-gray-400 z-10 fixed w-[75%] top-[3.55em] bottom-0 h-full duration-300 ${menu ? 'right-0':'right-[-100%]'} overflow-y-auto`}>
+              <div className='flex flex-col h-full justify-between'>
+              <div>
+              <div className='pt-12 pl-14 flex flex-col gap-4 '>
               {
                 Navdata.map((value)=>(
-                  <div>
-                    <div className=''>
+                  <div className='flex justify-between'>
+                    <div className= ' bg-slate-400 w-[200px] border-b-2 border-black/10 '>
                       <button className='flex items-center gap-1 text-lg' key={value.id}  onClick={() => toggleSubButtons(value.id)}>{value.buttoname}
                         {
                           value.subbuthai && <span>
@@ -168,12 +174,13 @@ const Header = () => {
                 ))
               }
               </div>
-              <button className='h-8 w-24 bg-[#3372b1] border-[2px] rounded-md text-white mt-4 ml-14'>Contact us</button>
-            
+              {/* <button className='h-8 w-24 bg-[#3372b1] border-[2px] rounded-md text-white mt-4 ml-14'>Contact us</button> */}
               </div>
-              <div className='flex gap-12 items-center justify-center'>
+              
+              {/* <div className='flex gap-12 items-center justify-center mb-4 '>
               <button className='text-xl text-gray-800'><LuPhoneCall/></button>
               <button className='text-2xl text-gray-800'><IoMailOutline/></button>
+              </div> */}
               </div>
             </div>
               

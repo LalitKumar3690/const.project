@@ -55,30 +55,37 @@ const Navdata = [
         subbut:[
             {
                 id:1,
+                link:'img1',
                 subbutname:"Mission & Vision"
             },
             {
                 id:2,
+                link:'img2',
                 subbutname:"Introduction"
             },
             {
                 id:3,
+                link:'img3',
                 subbutname:"Who We Are"
             },
             {
                 id:4,
+                link:'img4',
                 subbutname:"History"
             },
             {
                 id:5,
+                link:'img5',
                 subbutname:"Organization Structure"
             },
             {
                 id:6,
+                link:'img6',
                 subbutname:"Social Responsibility"
             },
             {
                 id:7,
+                link:'img7',
                 subbutname:"QA and HSE"
             }
         ]

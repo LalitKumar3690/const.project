@@ -41,15 +41,15 @@ const Aboutus = () => {
   }, []);
 
   return (
-    <div className='relative z-30 md:mt-36 '>
-      <div className='w-full md:h-96 h-48 relative mt-4'>
+    <div className='relative z-30 md:mt-36 mt-16 '>
+      <div className='w-full md:h-96 h-48 md:block hidden relative mt-4'>
         <div className='w-[80%] mx-auto border-2 border-gray-800 rounded-xl p-8 h-full '>
-          <img src={Bg1} className='w-full h-full object-cover'></img>
+          <img src={Bg1} className='w-full h-full object-container'></img>
         </div>
-        <div className='absolute  bottom-10 w-full flex justify-center items-center gap-12 flex-wrap'>
+        <div className='absolute  bottom-10 w-full hidden md:flex justify-center items-center gap-12 flex-wrap'>
           {
             buttons.map(v=>(
-              <buttons key={v.id} className='md:bg-sky-700 md:px-6 md:py-2 md:rounded-md text-gray-100 cursor-pointer' 
+              <buttons key={v.id} className='md:bg-sky-700 md:px-6 md:py-2 md:rounded text-gray-100 cursor-pointer' 
               onClick ={()=>{scrollHandler(v.link)}}
               >{v.name}</buttons>
             ))
@@ -65,22 +65,22 @@ const Aboutus = () => {
         {
           Aboutdata.map((value)=>(
             value.position ? 
-            <div key={value.id} id={value.link} className={`md:boxanimation bg-slate-200 py-12 z-50 relative duration-500 `}>
-              <div className='md:content1 flex gap-8 justify-center px-8 md:flex-row flex-col'>
+            <div key={value.id} id={value.link} className={`boxanimation bg-slate-200 py-12 z-50 relative duration-500 `}>
+              <div className='content1  flex gap-8 justify-center px-8 md:flex-row flex-col items-center'>
                 <div className={` md:w-[40%] w-[95%] h-full rounded-md transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0': 'opacity-0 -translate-x-[100%]'}`}>
                   <img src={value.src} className='rounded-md'></img>
                 </div>
-                <div className=' md:w-[40%] w-[95%] flex flex-col justify-center gap-8 '>
+                <div className=' md:w-[40%] w-[95%] flex flex-col justify-center gap-8 items-center'>
                   <h1 className='text-3xl font-sans font-semibold text-gray-800'>{value.title}</h1>
-                  <p  className='text-lg font-sans text-gray-600'>{value.description}</p>
+                  <p  className='text-lg md:text-left  text-justify font-sans text-gray-600'>{value.description}</p>
                 </div>
               </div>
             </div> : 
             <div key={value.id} id={value.link} className='boxanimation bg-slate-200 py-12 z-50 relative'>
-            <div className='md:content2 flex gap-8 justify-center px-8 md:flex-row flex-col'>
+            <div className='content2 flex gap-8 justify-center px-8 md:flex-row flex-col items-center'>
               <div className='md:w-[40%] w-[95%]  flex flex-col justify-center gap-8 items-center'>
                 <h1 className='text-3xl font-sans font-semibold text-gray-800'>{value.title}</h1>
-                <p  className='text-lg font-sans text-gray-600'>{value.description}</p>
+                <p  className='text-lg font-sans md:text-left text-justify text-gray-600'>{value.description}</p>
               </div>
               <div className='md:w-[40%] w-[95%] h-full rounded-md'>
                 <img src={value.src} className='rounded-md'></img>

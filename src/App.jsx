@@ -1,5 +1,7 @@
-// import Header from "./components/HeaderSection/Header";
+import Header from "./components/HeaderSection/Header";
 // import Footer from "./components/footer/Footer";
+import Aboutus from './components/aboutus/Aboutus';
+import { ScrollProvider } from './components/context/ScrollContext';
 import Mainsection from './components/main/Mainsection';
 // import Navbartemplate from './components/Nabar/Navbartemplate'
 // import Aboutus from "./components/aboutus/Aboutus";
@@ -8,6 +10,11 @@ import Mainsection from './components/main/Mainsection';
 
 const App = () => {
   return (
+    // <ScrollProvider>
+    //   <Mainsection/>
+    //   <Header/>
+    //   <Aboutus/>
+    // </ScrollProvider>
       <div className='relative'>
         <Mainsection/>
         {/* <Footer/> */}
