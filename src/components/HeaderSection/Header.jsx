@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom'
 
 
 const Header = () => {
-  
+  const [mouseEntered,  setMouseEntered] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [menu, setMenu] = useState(false);
   const [activeButton, setActiveButton] = useState(null);
@@ -71,7 +71,7 @@ const Header = () => {
                       <img src={Logo2} className={`${scrolling?'2xl:h-8 xl:h-7 lg:h-5 h-2':'2xl:h-9 xl:h-8 lg:h-6 h-3'}`}></img>
                   </div>
                   </Link>
-                  <div className='flex 2xl:h-12 xl:h-11 lg:h-7 h-6 2xl:mr-[7%] xl:mr-[3%] mr-[2%] w-full justify-end lg:mr-[1%] text-gray-600 font-semibold 2xl:gap-8 xl:gap-5 lg:gap-4 gap-4'>
+                  <div className='flex 2xl:h-12 xl:h-11 lg:h-7 h-6 2xl:mr-[4%] xl:mr-[3%] mr-[2%] w-full justify-end lg:mr-[1%] text-gray-600 font-semibold 2xl:gap-8 xl:gap-5 lg:gap-4 gap-4'>
                       {
                         Navdata.map((value, index) => (
                           <div className=''>
@@ -140,18 +140,25 @@ const Header = () => {
               <button className='h-8 w-24 bg-[#3372b1] border-[2px] rounded-md text-white'>Contact us</button>
               <button className='text-gray-200 text-3xl z-50' onClick={()=>setMenu(!menu)}>
                 {
-                  menu ? <RiCloseLargeLine className='text-gray-700'/> : <FiMenu  className='text-gray-200'/>
+                  menu ? <RiCloseLargeLine className='text-gray-100'/> : <FiMenu  className='text-gray-200'/>
                 }
               </button>
               <div className={`bg-gray-400 z-10 fixed w-[75%] top-[3.55em] bottom-0 h-full duration-300 ${menu ? 'right-0':'right-[-100%]'} overflow-y-auto`}>
-              <div className='flex flex-col h-full justify-between'>
+              <div className='flex flex-col h-full justify-between '>
               <div>
-              <div className='pt-12 pl-14 flex flex-col gap-4 '>
+              <div className=' flex flex-col mt-10 items-center gap-4 '>
               {
                 Navdata.map((value)=>(
                   <div className='flex justify-between'>
-                    <div className= ' bg-slate-400 w-[200px] border-b-2 border-black/10 '>
-                      <button className='flex items-center gap-1 text-lg' key={value.id}  onClick={() => toggleSubButtons(value.id)}>{value.buttoname}
+                    <div className=  {` w-[200px]`
+                    }
+                    
+                      onMouseEnter={()=>setMouseEntered(ture)}
+                    >
+                    {/* <div>
+                      <img src={value.src}></img>
+                    </div> */}
+                      <button className={`flex items-center gap-1 text-lg duration-300 bg-[url('${value.src}')] bg-cover w-full h-14 rounded-md justify-center text-white backdrop-blur-sm`} key={value.id}  onClick={() => toggleSubButtons(value.id)}>{value.buttoname}
                         {
                           value.subbuthai && <span>
                             {
@@ -161,7 +168,7 @@ const Header = () => {
                         }
                       </button>
                       {
-                        value.subbuthai && <div className={ ` ${activeButton === value.id  ? 'flex flex-col items-start pl-7 pt-3 gap-2 text-sm' : 'hidden'} `}>
+                        value.subbuthai && <div className={ ` ${activeButton === value.id  ? 'flex flex-col items-start pl-7 pt-3 gap-2 text-sm' : 'hidden'} `} onMouseLeave={()=>setMouseEntered(false)}>
                           {
                             value.subbut.map((sub)=>(
                               <button  key={sub.id}>{sub.subbutname}</button>

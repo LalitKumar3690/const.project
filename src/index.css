@@ -77,8 +77,140 @@
     animation-range: entry 0% cover 40%;
 }
 
+/* Intro.css */
+/* .intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c34;
+    color: white;
+    animation: fadeIn 1s forwards;
+}
 
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+} */
 
+@keyframes mainbox {
+    from{
+        opacity: 0;
+        transform: translateY(-1000px)
+    }
+    to{
+        opacity:1;
+        transform: translateY(0px)
+    }
+}
 
+.boxdropdown{
+    animation: mainbox 2.5s ease;
+}
+
+@keyframes secbox {
+    from{
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to{
+        opacity:1;
+        transform: scale(1);
+    }
+}
+
+.boxmotion{
+    animation: secbox 2.5s ease;
+}
+
+@keyframes text1 {
+    from{
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+    to{
+        opacity:1;
+        transform: translateX(0px);
+    }
+}
+
+.leftmotion{
+    animation: text1 2.5s ease;
+}
+
+@keyframes text2 {
+    from{
+        opacity: 0;
+        transform: translateX(1000px);
+    }
+    to{
+        opacity:1;
+        transform: translateX(0px);
+        }
+}
+
+.rightmotion{
+    animation: text2 2.5s ease;
+    }
+
+@keyframes  lefttextreverse {
+    from{
+        opacity: 1;
+        transform: translateX(0)px;
+    }
+    to{
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+}
+
+.leftreverse{
+    animation: lefttextreverse 2.5s ease;
+}
+
+@keyframes  righttextreverse {
+    from{
+        opacity: 1;
+        transform: translateX(0)px;
+    }
+    to{
+        opacity: 0;
+        transform: translateX(1000px);
+    }
+}
+
+.rightreverse{
+    animation: righttextreverse 2.5s ease;
+    }
+
+@keyframes mainboxreverse {
+    from{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(-1000px);
+    }
+}
+
+.boxdropup{
+    animation: mainboxreverse 2.5s ease;
+}

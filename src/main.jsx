@@ -8,13 +8,24 @@ import Footer from './components/footer/Footer.jsx'
 import { Outlet } from 'react-router-dom'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Aboutus from './components/aboutus/Aboutus.jsx'
+import Intro from './components/Intro.jsx'
+import { useState } from 'react'
 
 const Layout = ()=>{
+  const [showIntro, setShowIntro] = useState(true);
+
+    const handleIntroFinish = () => {
+        setShowIntro(false);
+    };
   return(
     <div>
-      <Header/>
-      <Outlet/>
-      <Footer/>
+      {
+        showIntro ? <Intro onFinish={handleIntroFinish} /> : <div>
+        <Header/>
+        <Outlet/>
+        <Footer/>
+      </div>
+      }
     </div>
   )
 }
