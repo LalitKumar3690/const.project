@@ -148,6 +148,7 @@
     to{
         opacity:1;
         transform: translateX(0px);
+        
     }
 }
 
@@ -212,5 +213,25 @@
 }
 
 .boxdropup{
+    /* background-color: transparent; */
     animation: mainboxreverse 2.5s ease;
 }
+
+@keyframes sidemenu {
+    0%{
+        scale: 1;
+    }
+    50%{
+        scale: 0;
+        transform: translateY(10px);
+    }
+    100%{
+        scale: 1;
+        transform: rotate(45deg);
+    }
+}
+
+.sidemenumotion{
+    animation: sidemenu  ease;
+}
+

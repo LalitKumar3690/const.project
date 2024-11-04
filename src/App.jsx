@@ -15,7 +15,8 @@ const App = () => {
     //   <Header/>
     //   <Aboutus/>
     // </ScrollProvider>
-      <div className='relative'>
+      <div className=''>
+      
         <Mainsection/>
         {/* <Footer/> */}
         {/* <Aboutus/> */}
