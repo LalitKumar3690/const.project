@@ -15,6 +15,9 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import HoverIcon from "./HoverIcon";
+import ScrollMovementComponent from "./ScrollMovementComponent";
+import TextChangingLoop from "./TextChangingLoop";
 
 function Mainsection() {
   // Define media queries for all four breakpoints
@@ -29,7 +32,15 @@ function Mainsection() {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
     const currentScroll = window.scrollY;
     const scrollPercent = (currentScroll / totalHeight) * 100;
-    setscrollposition(scrollPercent);
+    if(isExtraLargeScreen){
+    setscrollposition(scrollPercent*3.8);
+    }
+    if(isLargeScreen){
+      setscrollposition(scrollPercent*1.7);
+    }
+    if(isMediumScreen){
+      setscrollposition(scrollPercent*1.7);
+    }
   };
 
   // Determine scale based on screen size
@@ -57,20 +68,21 @@ function Mainsection() {
 
   return (
     <div className="flex flex-col">
-      <div className="h-screen w-24 z-40 fixed border-r-[1px] border-gray-400">
-        <div className=" mt-28 flex flex-col gap-2 items-center">
-          <div className="w-20 h-72 flex justify-center items-center">
+      <div className="h-screen w-24 md:w-16 z-40 fixed border-r-[1px] border-gray-400">
+        <div className=" lg:mt-20 xl:mt-28 md:mt-16 2xl:mt-32 h-full flex flex-col items-center justify-between">
+          <div className="w-20 h-60 md:h-64 lg:h-72 xl:h-72 2xl:h-1/2 flex justify-center items-center">
             <div className="h-[90%] rounded-lg w-1 bg-gray-400">
             <div 
             style={{transform:`translateY(${scrollposition}%)`}}
             className={`w-1 h-24 rounded-lg bg-gray-200`}></div>
+            
             </div> 
           </div>
-          <div className="w-20  h-48 text-white flex flex-col justify-center gap-2  items-center">
-            <FaInstagram className="p-2 text-4xl border-[0.5px] border-white/50  bg-white/10 duration-500 rounded-full hover:bg-blue-600"/>
-            <FaFacebookF className="p-2 text-4xl border-[0.5px] border-white/50 bg-white/10 duration-500 rounded-full hover:bg-blue-600"/>
-            <FaLinkedinIn className="p-2 text-4xl border-[0.5px] border-white/50 bg-white/10 duration-500 rounded-full hover:bg-blue-600"/>
-            <FaXTwitter className="p-2 text-4xl border-[0.5px] border-white/50 bg-white/10 duration-500 rounded-full hover:bg-blue-600"/>
+          <div className="w-20  lg:h-44 xl:h-48 2xl:h-72 text-white flex flex-col justify-center gap-2 2xl:gap-4  items-center 2xl:mb-28 xl:mb-28 lg:mb-20 md:mb-20">
+            <FaInstagram className="md:p-1 lg:p-2 xl:p-2 2xl:p-2 md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl border-[0.5px] border-white/50  bg-white/10 duration-500 rounded-full hover:bg-blue-600"/>
+            <FaFacebookF className="md:p-1 lg:p-2 xl:p-2 2xl:p-2 md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl border-[0.5px] border-white/50 bg-white/10 duration-500 rounded-full hover:bg-blue-600"/>
+            <FaLinkedinIn className="md:p-1 lg:p-2 xl:p-2 2xl:p-2 md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl border-[0.5px] border-white/50 bg-white/10 duration-500 rounded-full hover:bg-blue-600"/>
+            <FaXTwitter className="md:p-1 lg:p-2 xl:p-2 2xl:p-2 md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl border-[0.5px] border-white/50 bg-white/10 duration-500 rounded-full hover:bg-blue-600"/>
           </div>
         </div>
       </div>
@@ -79,7 +91,7 @@ function Mainsection() {
           <div className="w-screen h-screen">
             <iframe
               className="absolute top-0 left-0 w-full h-full bg-black"
-              src="https://www.youtube.com/embed/283PD41zho4?autoplay=1&loop=1&playlist=283PD41zho4&mute=1&controls=0"
+              // src="https://www.youtube.com/embed/283PD41zho4?autoplay=1&loop=1&playlist=283PD41zho4&mute=1&controls=0"
               title="YouTube video player"
               style={{
                 border: "none",
@@ -118,6 +130,7 @@ function Mainsection() {
                   </div>
                   <hr className="w-[20%] sm:w-[30%] lg:w-[39%] z-0 absolute right-0 bottom-0" />
                 </div>
+                
               </div>
             </div>
           </div>
@@ -401,6 +414,11 @@ function Mainsection() {
             Contact
           </button>
         </div>
+      </div>
+      <div className="w-full h-full">
+      {/* <HoverIcon/>
+      <TextChangingLoop/> */}
+      {/* <ScrollMovementComponent/> */}
       </div>
 
       {/* footer */}

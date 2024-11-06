@@ -22,6 +22,8 @@ const Header = () => {
   const toggleSubButtons = (id) => {
     setActiveButton(activeButton === id ? null : id); // Toggle the active button
   };
+  const [handleMouse , sethandleMouse] = useState(false);
+  const [handleMouse2 , sethandleMouse2] = useState(null);
 
   const handleScroll = () => {
     if (window.scrollY > 30) {
@@ -82,17 +84,25 @@ const Header = () => {
               className="relative z-50 w-14 h-14 group bg-slate-500  "
               onClick={()=>setsidemenu(!sidemenu)}
             >
-             <div className={`fixed z-50 top-28 bottom-0 bg-blue-600 h-screen w-[20%] left-0 duration-500 ${sidemenu ? 'translate-x-0' : '-translate-x-full'}`}
+            <div className="fixed z-50 w-[20%] duration-700 left-0 bottom-0 top-14  group-hover:translate-x-0 -translate-x-[1000px]" >
+             <div className={`fixed z-50 top-5  bottom-0 bg-transparent h-screen w-full `}
              >
-              <div>
+              <div className={`${scrolling ? 'md:-mt-9 lg:-mt-[0.8rem] xl:mt-[0.2rem] 2xl:mt-[1.2rem]' : 'md:-mt-5 lg:mt-[0.7rem] xl:mt-[2.2rem] 2xl:mt-[3.2rem]'} bg-white h-full flex p-4 items-center flex-col gap-3`}>
                 {
-                  Navdata.map(val=>(
-                    <div>
-                      <button>{val.buttoname}</button>
+                  Navdata.map((val, index)=>(
+                    <div className={`relative flex justify-center items-center 2xl:w-[230px] xl:w-[200px] lg:w-[200px] md:w-[100px] rounded-md  overflow-hidden h-20  bg-transparent duration-500 text-lg font-NavMenuFont ${handleMouse && handleMouse2 === index ? 'scale-105 ' : 'scale-100 '}`}
+                    onMouseEnter={()=>{sethandleMouse(true); sethandleMouse2(index)}}
+                    onMouseLeave={()=>{sethandleMouse(false); sethandleMouse2(null)}}
+                    >
+                      <button className={`absolute z-50  w-full h-full rounded-md  ${handleMouse && handleMouse2 === index ? 'backdrop-brightness-50 text-gray-50' : 'backdrop-brightness-100 text-gray-900'}`}>{val.buttoname}</button>
+                      <div className={`w-full h-full rounded-md ${handleMouse && handleMouse2 === index ? 'block' : 'hidden'} `}>
+                        <img src={val.src} className={`w-full h-full object-cover rounded-md`}></img>
+                      </div>
                     </div>
                   ))
                 }
               </div>
+             </div>
              </div>
             </div>
             <div
