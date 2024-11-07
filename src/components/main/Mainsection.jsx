@@ -68,7 +68,7 @@ function Mainsection() {
 
   return (
     <div className="flex flex-col">
-      <div className="h-screen w-24 md:w-16 z-40 fixed border-r-[1px] border-gray-400">
+      <div className="h-screen w-24 md:w-16 z-40 fixed border-r-[1px] border-gray-400 md:block hidden">
         <div className=" lg:mt-20 xl:mt-28 md:mt-16 2xl:mt-32 h-full flex flex-col items-center justify-between">
           <div className="w-20 h-60 md:h-64 lg:h-72 xl:h-72 2xl:h-1/2 flex justify-center items-center">
             <div className="h-[90%] rounded-lg w-1 bg-gray-400">

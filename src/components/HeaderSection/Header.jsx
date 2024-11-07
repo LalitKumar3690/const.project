@@ -12,6 +12,10 @@ import { RiCloseLargeLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import { Link } from "react-router-dom";
 // import { useScroll } from '../context/ScrollContext';
+import { FaFacebookF } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Header = () => {
   const [sidemenu, setsidemenu] = useState(false);
@@ -81,16 +85,16 @@ const Header = () => {
             }`}
           >
             <div
-              className="relative z-50 w-14 h-14 group bg-slate-500  "
-              onClick={()=>setsidemenu(!sidemenu)}
+              className="hidden md:block z-50 w-14 h-14 group bg-slate-500  "
+              onMouseEnter={()=>setsidemenu(true)}
             >
-            <div className="fixed z-50 w-[20%] duration-700 left-0 bottom-0 top-14  group-hover:translate-x-0 -translate-x-[1000px]" >
-             <div className={`fixed z-50 top-5  bottom-0 bg-transparent h-screen w-full `}
+            {/* <div className="absolute z-50 w-[400px] h-screen bg-slate-500 duration-700 left-0 bottom-0 top-14  group-hover:translate-x-0 -translate-x-[1500px] " > */}
+             <div className={`absolute z-50 top-5 h-full bg-slate-400 overflow-y-auto bottom-0 left-0 w-[30%]`}
              >
               <div className={`${scrolling ? 'md:-mt-9 lg:-mt-[0.8rem] xl:mt-[0.2rem] 2xl:mt-[1.2rem]' : 'md:-mt-5 lg:mt-[0.7rem] xl:mt-[2.2rem] 2xl:mt-[3.2rem]'} bg-white h-full flex p-4 items-center flex-col gap-3`}>
                 {
                   Navdata.map((val, index)=>(
-                    <div className={`relative flex justify-center items-center 2xl:w-[230px] xl:w-[200px] lg:w-[200px] md:w-[100px] rounded-md  overflow-hidden h-20  bg-transparent duration-500 text-lg font-NavMenuFont ${handleMouse && handleMouse2 === index ? 'scale-105 ' : 'scale-100 '}`}
+                    <div className={`relative flex justify-center items-center w-[80%] rounded-md  overflow-hidden h-20  bg-transparent duration-500 text-lg font-NavMenuFont ${handleMouse && handleMouse2 === index ? 'scale-105 ' : 'scale-100 '}`}
                     onMouseEnter={()=>{sethandleMouse(true); sethandleMouse2(index)}}
                     onMouseLeave={()=>{sethandleMouse(false); sethandleMouse2(null)}}
                     >
@@ -101,12 +105,28 @@ const Header = () => {
                     </div>
                   ))
                 }
+                <div>
+                  <div>
+                    <h1>CONTACT US</h1>
+                    <button>Email</button>
+                    <button>phone</button>
+                  </div>
+                  <div>
+                    <h1>FOLLOW US</h1>
+                    <div>
+                      <FaInstagram/>
+                      <FaLinkedinIn/>
+                      <FaXTwitter/>
+                      <FaFacebookF/>
+                    </div>
+                  </div>
+                </div>
               </div>
              </div>
-             </div>
+             {/* </div> */}
             </div>
             <div
-              className={`h-full  w-[75%] lg:w-[72%] flex justify-center rounded-md items-center`}
+              className={`h-full w-[75%] md:w-[72%] flex justify-center rounded-md items-center`}
             >
               <div
                 className={`flex items-center justify-between bg-white w-[95%] shadow-xl rounded-l-md `}
@@ -132,16 +152,16 @@ const Header = () => {
                       src={Logo2}
                       className={`${
                         scrolling
-                          ? "2xl:h-8 xl:h-7 lg:h-5 h-2"
-                          : "2xl:h-9 xl:h-8 lg:h-6 h-3"
+                          ? "2xl:h-8 xl:h-7 lg:h-5 h-4"
+                          : "2xl:h-9 xl:h-8 lg:h-6 h-4"
                       }`}
                     ></img>
                   </div>
                 </Link>
-                <div className="flex 2xl:h-12 xl:h-11 lg:h-7 h-6 2xl:mr-[4%] xl:mr-[3%] mr-[2%] w-full justify-end lg:mr-[1%] text-gray-600 font-semibold 2xl:gap-8 xl:gap-5 lg:gap-4 gap-4">
+                <div className="flex 2xl:h-12 xl:h-11 lg:h-7 h-6 2xl:mr-[4%] xl:mr-[3%] mr-[2%]  w-full justify-end lg:mr-[1%] text-gray-600 font-semibold 2xl:gap-8 xl:gap-5 lg:gap-4 gap-4">
                   {Navdata.map((value, index) => (
                     <div className="">
-                      <div className=" h-full group flex flex-col justify-center">
+                      <div className=" h-full w-max group flex flex-col justify-center">
                         <Link
                           to="/about"
                           onClick={() =>
@@ -214,17 +234,13 @@ const Header = () => {
               <span
                 class={`w-0 h-0 relative ${
                   scrolling
-                    ? "2xl:border-b-[4.1em] xl:border-b-[3.5em] lg:border-b-[3.1em] border-b-[1.75em] 2xl:border-r-[6em] xl:border-r-[5em] lg:border-r-[4em] border-r-[2em]"
-                    : "2xl:border-b-[5.08em] xl:border-b-[4.55em] lg:border-b-[3.55em] border-b-[2.25em] 2xl:border-r-[7em] xl:border-r-[6em] lg:border-r-[5em] border-r-[3em] "
+                    ? "2xl:border-b-[4.2em] xl:border-b-[3.5em] lg:border-b-[3.1em] border-b-[1.75em] 2xl:border-r-[6em] xl:border-r-[5em] lg:border-r-[4em] border-r-[2.1em]"
+                    : "2xl:border-b-[5.08em] xl:border-b-[4.55em] lg:border-b-[3.6em] border-b-[2.25em] 2xl:border-r-[7em] xl:border-r-[6em] lg:border-r-[5em] border-r-[3.1em] "
                 } border-b-white border-r-transparent`}
               ></span>
             </div>
             <div
-              className={`flex ${
-                scrolling
-                  ? "2xl:py-[4px] xl:py-[3px] lg:py-[3px]"
-                  : "2xl:py-[6px] xl:py-[6px] lg:py-[4px] py-[4px]"
-              } 2xl:gap-4 xl:gap-4 lg:gap-4 gap-2 bg-transparent`}
+              className={`flex  2xl:gap-4 xl:gap-4 lg:gap-4 gap-2 bg-transparent`}
             >
               <button
                 className={`${
@@ -244,7 +260,7 @@ const Header = () => {
               >
                 <IoMailOutline />
               </button>
-              <button className="bg-transparent 2xl:px-7 xl:px-3 lg:px-4 px-2 2xl:rounded-md xl:rounded-md lg:rounded-md rounded-[0.25rem] 2xl:text-lg xl:text-base lg:text-sm text-[0.45rem] text-white font-semibold border-solid 2xl:border-[2px] xl:border-[2px] lg:border-[2px] border-[1px] border-white hover:white hover:scale-105 transition-transform ease-in-out duration-500">
+              <button className={`bg-transparent ${scrolling ? '2xl:w-48 xl:w-44 lg:w-40 w-20 2xl:h-14 xl:h-12 lg:h-10 h-6' : '2xl:w-52 xl:w-48 lg:w-44 w-24 2xl:h-16 xl:h-14 lg:h-12 h-8 '} 2xl:rounded-md xl:rounded-md lg:rounded-md rounded-[0.25rem] 2xl:text-lg xl:text-base lg:text-sm text-[0.45rem] text-white font-semibold border-solid 2xl:border-[2px] xl:border-[2px] lg:border-[2px] border-[1px] border-white hover:white hover:scale-105 transition-transform ease-in-out duration-500`}>
                 Schedule Consulting
               </button>
             </div>
