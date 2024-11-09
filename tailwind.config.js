@@ -14,6 +14,9 @@ export default {
         subMenuFont:['Karla', 'sans-serif']
     },
     },
+    // backgroundImage: {
+    //   'subnavbg': "url('/assets/subnavbg2.png')"
+    // }
   },
   plugins: [],
 }

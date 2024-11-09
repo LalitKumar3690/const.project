@@ -16,6 +16,8 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Subnavbg from '../../assets/subnavbg5.png';
+// import Subnavbg2 from '../../assets/subnavbg3.png';
 
 const Header = () => {
   const [sidemenu, setsidemenu] = useState(false);
@@ -37,6 +39,8 @@ const Header = () => {
     }
   };
 
+
+
   useEffect(() => {
     if (menu) {
       document.body.style.overflow = "hidden";
@@ -50,6 +54,20 @@ const Header = () => {
     };
   }, [menu]);
 
+
+  useEffect(() => {
+    if (sidemenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Clean up on component unmount or when the menu closes
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [sidemenu]);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -60,7 +78,7 @@ const Header = () => {
   const [isHovered, setIsHovered] = useState(null);
   const [optionsVisible, setoptionVisible] = useState(false);
   return (
-    <header className="relative z-50 top-0">
+    <header className="relative top-0 flex justify-center">
       <div
         className={` md:fixed sm:fixed hidden z-20 top-0 bottom-0 left-0 h-full w-full duration-300 ${
           menu ? "backdrop-blur-sm" : "backdrop-blur-0"
@@ -69,32 +87,19 @@ const Header = () => {
           menu ? setMenu(false) : setMenu(false);
         }}
       />
-      <nav>
-        <div
-          className={`hidden w-full top-0 left-0  z-50 fixed md:flex sm:flex items-center justify-center ${
-            scrolling
-              ? "bg-gradient-to-l to-white via-white from-sky-900 2xl:h-[6rem] xl:h-[5rem] lg:h-[4rem] h-[2.5rem] transition-colors duration-300 ease-in-out"
-              : "bg-gradient-to-l to-white via-white/ from-[#3472b03b] bottomborder 2xl:h-[8rem] xl:h-[7rem] lg:h-[5.5rem] h-[3.5rem]"
-          }`}
-        >
-          <div
-            className={`w-[95%] hidden sm:flex md:flex justify-between items-center rounded-md gap-2 ${
-              scrolling
-                ? "2xl:h-[4em] xl:h-[3.5em] lg:h-[3em] h-[1.5em]"
-                : "2xl:h-[4.8em] xl:h-[4.3em] lg:h-[3.3em] h-[2em]"
-            }`}
-          >
-            <div
-              className="hidden md:block z-50 w-14 h-14 group bg-slate-500  "
-              onMouseEnter={()=>setsidemenu(true)}
-            >
-            {/* <div className="absolute z-50 w-[400px] h-screen bg-slate-500 duration-700 left-0 bottom-0 top-14  group-hover:translate-x-0 -translate-x-[1500px] " > */}
-             <div className={`absolute z-50 top-5 h-full bg-slate-400 overflow-y-auto bottom-0 left-0 w-[30%]`}
+      <nav className="relative w-full 2xl:max-w-[120em]">
+      <div className={`absolute z-20 top-0 h-screen bg-transparent bottom-0 left-0 w-[30%] overflow-hidden`}
              >
-              <div className={`${scrolling ? 'md:-mt-9 lg:-mt-[0.8rem] xl:mt-[0.2rem] 2xl:mt-[1.2rem]' : 'md:-mt-5 lg:mt-[0.7rem] xl:mt-[2.2rem] 2xl:mt-[3.2rem]'} bg-white h-full flex p-4 items-center flex-col gap-3`}>
+              <div className={`absolute z-50 bg-white w-full h-full bg-whie overflow-y-auto scroll-mx-0 duration-500 
+              ${sidemenu ? 'translate-x-0' : '-translate-x-full'}
+              2xl:mt-32 xl:mt-28 lg:mt-[5.5rem] md:mt-14
+              `}
+              onMouseLeave={()=>setsidemenu(false)}
+              >
+              <div className={`h-full w-full flex p-4 items-center flex-col`}>
                 {
                   Navdata.map((val, index)=>(
-                    <div className={`relative flex justify-center items-center w-[80%] rounded-md  overflow-hidden h-20  bg-transparent duration-500 text-lg font-NavMenuFont ${handleMouse && handleMouse2 === index ? 'scale-105 ' : 'scale-100 '}`}
+                    <div className={`flex justify-center items-center w-[80%] rounded-md  overflow-hidden h-20  bg-transparent duration-500 text-lg font-NavMenuFont ${handleMouse && handleMouse2 === index ? 'scale-105 ' : 'scale-100 '}`}
                     onMouseEnter={()=>{sethandleMouse(true); sethandleMouse2(index)}}
                     onMouseLeave={()=>{sethandleMouse(false); sethandleMouse2(null)}}
                     >
@@ -122,14 +127,48 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-             </div>
+              </div>
+      </div>
+        <div
+          className={` hidden w-full 2xl:max-w-[120em] top-0 z-50 fixed md:flex sm:flex items-center justify-center ${
+            scrolling
+              ? "bg-gradient-to-l to-white via-white from-sky-900 2xl:h-[6rem] xl:h-[5rem] lg:h-[4rem] h-[2.5rem] transition-colors duration-300 ease-in-out"
+              : "bg-gradient-to-l to-white via-white from-[#3472b03b] bottomborder 2xl:h-[8rem] xl:h-[7rem] lg:h-[5.5rem] h-[3.5rem]"
+          }`}
+          
+        >
+          
+          <div
+            className={` w-[95%] hidden sm:flex md:flex justify-between items-center rounded-md gap-2 ${
+              scrolling
+                ? "2xl:h-[4em] xl:h-[3.5em] lg:h-[3em] h-[1.5em]"
+                : "2xl:h-[4.8em] xl:h-[4.3em] lg:h-[3.3em] h-[2em]"
+            }`}
+            onMouseEnter={()=>setsidemenu(false)}  
+          >
+            
+            <div
+              className={`hidden md:block z-50 bg-slate-500 ${
+                scrolling
+                  ? "2xl:w-[4em] xl:w-[3.5em] lg:w-[3em] w-[1.5em] 2xl:h-[3.8em] xl:h-[3.3em] lg:h-[2.8em] h-[1.5em]"
+                  : "2xl:w-[4.5em] xl:w-[4em] lg:w-[3.5em] w-[2em] 2xl:h-[4.8em] xl:h-[4.3em] lg:h-[3.3em] h-[2em]"
+              }`}
+              onMouseEnter={()=>setsidemenu(true)}
+              
+            >
+            {/* <div className="absolute z-50 w-[400px] h-screen bg-slate-500 duration-700 left-0 bottom-0 top-14  group-hover:translate-x-0 -translate-x-[1500px] " > */}
              {/* </div> */}
             </div>
+             
             <div
-              className={`h-full w-[75%] md:w-[72%] flex justify-center rounded-md items-center`}
+              className={`relative h-full w-[75%] md:w-[72%] flex justify-center rounded-md items-center`}
+              onMouseEnter={()=>setsidemenu(false)}
             >
+              <div className="absolute h-full w-full ">
+              <img src={Subnavbg} className="w-full h-full object-cover " style={{boxShadow:'border-box'}}></img>
+            </div>
               <div
-                className={`flex items-center justify-between bg-white w-[95%] shadow-xl rounded-l-md `}
+                className={`relative z-50 flex items-center justify-between  w-full px-4 pr-32  rounded-l-md `}
               >
                 <Link
                   to="/"
@@ -138,14 +177,14 @@ const Header = () => {
                   }
                 >
                   <div
-                    className={`flex 2xl:w-60 xl:w-60 lg:w-48 w-48 h-full items-center  pt-1`}
+                    className={`flex 2xl:w-60 xl:w-48 lg:w-48 w-48 h-full items-center  pt-1`}
                   >
                     <img
                       src={Logo}
                       className={`${
                         scrolling
                           ? "2xl:w-[4em] xl:w-[3.5em] lg:w-[3em] w-[1.5em] 2xl:h-[3.8em] xl:h-[3.3em] lg:h-[2.8em] h-[1.5em]"
-                          : "2xl:w-[4.5em] xl:w-[4em] lg:w-[3.5em] w-[2em] 2xl:h-[4.8em] xl:h-[4.3em] lg:h-[3.3em] h-[2em]"
+                          : "2xl:w-[4.5em] xl:w-[4em] lg:w-[3.5em] w-[2em] 2xl:h-[4.8em] xl:h-[4em] lg:h-[3.3em] h-[2em]"
                       }`}
                     ></img>
                     <img
@@ -158,7 +197,7 @@ const Header = () => {
                     ></img>
                   </div>
                 </Link>
-                <div className="flex 2xl:h-12 xl:h-11 lg:h-7 h-6 2xl:mr-[4%] xl:mr-[3%] mr-[2%]  w-full justify-end lg:mr-[1%] text-gray-600 font-semibold 2xl:gap-8 xl:gap-5 lg:gap-4 gap-4">
+                <div className="flex 2xl:h-12 xl:h-11 lg:h-7 h-6 2xl:mr-[4%] xl:mr-[2%] mr-[2%]  w-full justify-end lg:mr-[1%] text-gray-600 font-semibold 2xl:gap-6 xl:gap-4 lg:gap-4 gap-4">
                   {Navdata.map((value, index) => (
                     <div className="">
                       <div className=" h-full w-max group flex flex-col justify-center">
@@ -231,13 +270,13 @@ const Header = () => {
                   ))}
                 </div>
               </div>
-              <span
+              {/* <span
                 class={`w-0 h-0 relative ${
                   scrolling
                     ? "2xl:border-b-[4.2em] xl:border-b-[3.5em] lg:border-b-[3.1em] border-b-[1.75em] 2xl:border-r-[6em] xl:border-r-[5em] lg:border-r-[4em] border-r-[2.1em]"
                     : "2xl:border-b-[5.08em] xl:border-b-[4.55em] lg:border-b-[3.6em] border-b-[2.25em] 2xl:border-r-[7em] xl:border-r-[6em] lg:border-r-[5em] border-r-[3.1em] "
                 } border-b-white border-r-transparent`}
-              ></span>
+              ></span> */}
             </div>
             <div
               className={`flex  2xl:gap-4 xl:gap-4 lg:gap-4 gap-2 bg-transparent`}
